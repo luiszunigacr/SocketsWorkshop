@@ -45,9 +45,13 @@ int main() {
 
     puts("Bind done");
 
+
+
     //Listen to incoming connections
     listen(s , 3);
 
+
+    
     //Accept and incoming connection
     puts("Waiting for incoming connections...");
 
@@ -65,7 +69,7 @@ int main() {
 
     //Reply to client
     char *message;
-    message = "Hello Client , I have received your connection. But I have to go now, bye\n";
+    message = "Hola cliente. Recibí su conexión. Chao!\n";
     send(new_socket , message , strlen(message) , 0);
 
     getchar();
