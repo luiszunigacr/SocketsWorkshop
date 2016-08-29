@@ -51,7 +51,7 @@ int main() {
     listen(s , 3);
 
 
-    
+
     //Accept and incoming connection
     puts("Waiting for incoming connections...");
 
@@ -76,6 +76,8 @@ int main() {
 
     closesocket(s);
     WSACleanup();
+
+    puts("Socket closed");
 
     return 0;
 }
