@@ -7,14 +7,14 @@ int main() {
 
     WSADATA wsa;
 
-    printf("\nInitialising Winsock...");
+    printf("\nInitialising Winsock...\n");
     if (WSAStartup(MAKEWORD(2,2),&wsa) != 0)
     {
-        printf("Failed. Error Code : %d",WSAGetLastError());
+        printf("Failed. Error Code : %d\n",WSAGetLastError());
         return 1;
     }
 
-    printf("Initialised.");
+    printf("Initialised.\n");
 
 
 
@@ -24,7 +24,7 @@ int main() {
     int protocol = 0; //Default: IPPROTO_TCP
     if((s = socket(family, type, protocol)) == INVALID_SOCKET)
     {
-        printf("Could not create socket : %d" , WSAGetLastError());
+        printf("Could not create socket : %d\n" , WSAGetLastError());
     }
 
     printf("Socket created.\n");
@@ -40,12 +40,13 @@ int main() {
     //Bind
     if( bind(s ,(struct sockaddr *)&server , sizeof(server)) == SOCKET_ERROR)
     {
-        printf("Bind failed with error code : %d" , WSAGetLastError());
+        printf("Bind failed with error code : %d\n" , WSAGetLastError());
     }
 
     puts("Bind done");
 
-
+    //Listen to incoming connections
+    listen(s , 3);
 
     //Accept and incoming connection
     puts("Waiting for incoming connections...");
@@ -57,7 +58,7 @@ int main() {
     new_socket = accept(s , (struct sockaddr *)&client, &c);
     if (new_socket == INVALID_SOCKET)
     {
-        printf("accept failed with error code : %d" , WSAGetLastError());
+        printf("accept failed with error code : %d\n" , WSAGetLastError());
     }
 
     puts("Connection accepted");
