@@ -69,9 +69,9 @@ int main() {
 
     //Reply to client
     char *message;
-    message = "Hola cliente. Recibí su conexión. Chao!\n";
-    send(new_socket , message , strlen(message) , 0);
+    message = "Hello client. I received your connection. Bye!\n";
 
+    send(new_socket , message , strlen(message) , 0);
     getchar();
 
     closesocket(s);
